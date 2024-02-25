@@ -1,8 +1,9 @@
 from .models import Task
 from rest_framework import serializers
 
-class TaskS(serializers.Serializer):
+
+class TaskS(serializers.ModelSerializer):
     class Meta:
-        model=Task
-        field=('id','title','description','done','created_at')
-        read_only = ('id','created_at')
+        model = Task
+        fields = ('id', 'title', 'description', 'done', 'create_at')
+        read_only_fields = ('id', 'created_at')
