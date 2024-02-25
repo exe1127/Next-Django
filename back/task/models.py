@@ -1,6 +1,6 @@
 from django.db import models
 
-class User(models.Model):
+class Task(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField
     done=models.BooleanField(default=False)
