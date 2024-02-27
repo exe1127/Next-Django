@@ -6,12 +6,22 @@ function FormTask() {
 
     const handelSubmit = async (e) => {
         e.preventDefault();
-        const respuesta = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/task/`,
-            { method: 'POST', body: JSON.stringify(titulo, descripcion), headers: { 'Content-Type': 'application/json' } },
-
-        )
-        const data = respuesta.json();
-        console.log(data);
+        try {
+            const respuesta = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/back/task/`, {
+                method: 'POST',
+                body: JSON.stringify({ title: titulo, description: descripcion }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (!respuesta.ok) {
+                throw new Error('Error en la solicitud');
+            }
+            const data = await respuesta.json();
+            console.log(data);
+        } catch (error) {
+            console.error('Error:', error);
+        }
     }
 
     return (
