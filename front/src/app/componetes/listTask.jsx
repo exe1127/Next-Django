@@ -1,12 +1,5 @@
 
-
-const cargarTareas = async () => {
-    /* const respuesta = await fetch(`${process.env.BACKEND_URL}/back/task/`); */
-    const respuesta = await fetch(`${process.env.BACKEND_URL}/back/task/`);
-    const data = await respuesta.json();
-    return data;
-}
-
+import { cargarTareas } from "../callbackend/function";
 
 const ListTask = () => {
     const lista = cargarTareas();
