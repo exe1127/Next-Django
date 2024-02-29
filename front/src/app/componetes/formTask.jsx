@@ -1,15 +1,15 @@
 'use client'
-import { useState } from 'react';
-import { sendTask } from '../callbackend/function';
+
+import { sendTask, cargarElementos } from '../callbackend/function';
 function FormTask() {
-    const [titulo, setTitulo] = useState("");
-    const [descripcion, setDescripcion] = useState("");
+
+    const { titulo, setTitulo, descripcion, setDescripcion } = cargarElementos();
 
     const handelSubmit = async (e) => {
         e.preventDefault();
         sendTask(titulo, descripcion);
     }
-    
+
     return (
         <div className="bg-slate-200 p-7">
             <form action="" onSubmit={handelSubmit} >

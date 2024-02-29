@@ -1,9 +1,23 @@
+import React, { useState, useEffect } from 'react';
+
 export const cargarTareas = async () => {
     const respuesta = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/back/task/`);
     const data = await respuesta.json();
     return data;
 }
 
+export const cargarElementos = () => {
+    const [titulo, setTitulo] = useState("");
+    const [descripcion, setDescripcion] = useState("");
+
+    return { titulo, setTitulo, descripcion, setDescripcion }
+}
+
+export const editar = (item) => {
+    const { setDescripcion, setTitulo } = cargarElementos();
+    setDescripcion(item.description);
+    setTitulo(item.titulo);
+}
 
 export const sendTask = async (titulo, descripcion) => {
 
