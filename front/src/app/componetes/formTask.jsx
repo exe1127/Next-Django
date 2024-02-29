@@ -9,7 +9,7 @@ function FormTask() {
         e.preventDefault();
         sendTask(titulo, descripcion);
     }
-
+    
     return (
         <div className="bg-slate-200 p-7">
             <form action="" onSubmit={handelSubmit} >

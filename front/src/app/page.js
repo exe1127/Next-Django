@@ -7,7 +7,7 @@ export default function Home() {
       <div className="container mx-auto my-3">
         <div className="flex gap-x-10">
           <FormTask />
-          <ListTask />
+          <ListTask  />
         </div>
       </div>
 
