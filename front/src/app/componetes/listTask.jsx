@@ -1,8 +1,9 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { cargarTareas } from '../callbackend/function';
+import CardTask from './cardTask';
 
-const ListTask = ({ onSelectItem, actualizar }) => {
+const ListTask = ({ onSelectItem, actualizar, setActualizar }) => {
     const [lista, setLista] = useState([]);
 
     useEffect(() => {
@@ -22,17 +23,7 @@ const ListTask = ({ onSelectItem, actualizar }) => {
             <h3 className="text-orange-400 font-bold mx-2 mt-2 mb-3">Lista de tareas </h3>
             <div className="overflow-y-auto max-h-80">
                 {lista.map(item => (
-                    <div key={item.id} className="bg-blue-500 px-4 py-3 mb-2 rounded-md flex justify-between items-center">
-                        <div>
-                            <h1> {item.title} </h1>
-                            <p> {item.description} </p>
-                        </div>
-                        <div>
-                            <button className="bg-green-500 hover:bg-green-300 text-white font-bold py-1 px-2 rounded mr-2"
-                                onClick={() => handleEdit(item)}>Editar</button>
-                            <button className="bg-red-500 hover:bg-red-300 text-white font-bold py-1 px-2 rounded">Eliminar</button>
-                        </div>
-                    </div>
+                    <CardTask item={item} handleEdit={handleEdit} key={item.key} setActualizar={setActualizar} actualizar={actualizar} />
                 ))}
             </div>
         </div>

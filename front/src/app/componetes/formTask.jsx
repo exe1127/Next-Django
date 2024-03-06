@@ -8,7 +8,7 @@ const FormTask = ({ selectedItem, setSelectedItem, setActualizar, actualizar }) 
         setActualizar(!actualizar)
     }
     return (
-        <div className="bg-slate-200 p-7">
+        <div className="bg-slate-200 p-7 ">
             <form action="" onSubmit={handelSubmit}>
                 <h1 className="text-green-700 font-bold mb-2">Añadir Tarea</h1>
                 <input
