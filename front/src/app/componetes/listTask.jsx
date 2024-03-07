@@ -5,6 +5,7 @@ import CardTask from './cardTask';
 
 const ListTask = ({ onSelectItem, actualizar, setActualizar }) => {
     const [lista, setLista] = useState([]);
+    const handleEdit = (item) => onSelectItem(item);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -13,10 +14,6 @@ const ListTask = ({ onSelectItem, actualizar, setActualizar }) => {
         };
         fetchData();
     }, [actualizar]);
-
-    const handleEdit = (item) => {
-        onSelectItem(item);
-    };
 
     return (
         <div className="container bg-slate-400 p-4 rounded-md">

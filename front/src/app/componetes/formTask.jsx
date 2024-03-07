@@ -1,12 +1,14 @@
 'use client'
 import React from 'react';
-import { sendTask, cargarElementos } from '../callbackend/function';
+import { sendTask } from '../callbackend/function';
 const FormTask = ({ selectedItem, setSelectedItem, setActualizar, actualizar }) => {
+
     const handelSubmit = async (e) => {
         e.preventDefault();
         await sendTask(selectedItem.title, selectedItem.description, selectedItem.done);
         setActualizar(!actualizar);
     }
+
     return (
         <div className="bg-slate-200 p-7 ">
             <form action="" onSubmit={handelSubmit}>

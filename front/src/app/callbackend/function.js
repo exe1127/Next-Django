@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 
 
 export const cargarTareas = async () => {
@@ -12,7 +11,7 @@ export const sendTask = async (titulo, descripcion, done) => {
     try {
         const respuesta = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/back/task/`, {
             method: 'POST',
-            body: JSON.stringify({ title: titulo, description: descripcion, done: done}),
+            body: JSON.stringify({ title: titulo, description: descripcion, done: done }),
             headers: {
                 'Content-Type': 'application/json'
             }

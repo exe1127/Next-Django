@@ -6,6 +6,7 @@ import ListTask from './componetes/listTask';
 export default function Home() {
     const [selectedItem, setSelectedItem] = useState();
     const [actualizar, setActualizar] = useState(false);
+    
     return (
         <div className="container mx-auto my-3">
             <div className="flex gap-x-10">
