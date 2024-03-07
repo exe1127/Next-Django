@@ -4,8 +4,8 @@ import { sendTask, cargarElementos } from '../callbackend/function';
 const FormTask = ({ selectedItem, setSelectedItem, setActualizar, actualizar }) => {
     const handelSubmit = async (e) => {
         e.preventDefault();
-        await sendTask(selectedItem.title, selectedItem.description);
-        setActualizar(!actualizar)
+        await sendTask(selectedItem.title, selectedItem.description, selectedItem.done);
+        setActualizar(!actualizar);
     }
     return (
         <div className="bg-slate-200 p-7 ">
@@ -37,6 +37,13 @@ const FormTask = ({ selectedItem, setSelectedItem, setActualizar, actualizar }) 
                         });
                     }}
                 />
+                <input type="checkbox" checked={selectedItem ? selectedItem.done : false} onChange={(e) => {
+                    setSelectedItem({
+                        ...selectedItem,
+                        done: e.target.checked==true ? true : false
+                    });
+                }} />
+                <span className="ml-2 text-green-500 font-bold">Done</span>
                 <button type="submit" className="bg-blue-500 hover:bg-blue-300 text-white font-bold py-2 px-4 rounded block">Guardar</button>
             </form>
         </div>
