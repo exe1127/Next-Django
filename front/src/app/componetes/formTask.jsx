@@ -1,11 +1,8 @@
 'use client'
-import React, { useState } from 'react';
+import React from 'react';
 import { sendTask } from '../callbackend/function';
 const FormTask = ({ selectedItem, setSelectedItem, setActualizar, actualizar }) => {
-    /* const [update, setUpdate] = useState(
-        selectedItem ? true : false,
-    ) */
-
+   
     const handelSubmit = async (e) => {
         e.preventDefault();
         await sendTask(selectedItem.title, selectedItem.description, selectedItem.done, selectedItem.id);

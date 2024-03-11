@@ -3,7 +3,7 @@ import React from 'react';
 
 import { sup } from '../callbackend/function';
 export default function CardTask({ item, handleEdit, key, actualizar, setActualizar }) {
-    
+
     return (
         <>
             <div key={key} className="bg-blue-500 px-4 py-3 mb-2 rounded-md flex justify-between items-center">
