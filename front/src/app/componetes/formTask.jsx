@@ -1,11 +1,14 @@
 'use client'
-import React from 'react';
+import React, { useState } from 'react';
 import { sendTask } from '../callbackend/function';
 const FormTask = ({ selectedItem, setSelectedItem, setActualizar, actualizar }) => {
+    /* const [update, setUpdate] = useState(
+        selectedItem ? true : false,
+    ) */
 
     const handelSubmit = async (e) => {
         e.preventDefault();
-        await sendTask(selectedItem.title, selectedItem.description, selectedItem.done);
+        await sendTask(selectedItem.title, selectedItem.description, selectedItem.done, selectedItem.id);
         setActualizar(!actualizar);
     }
 
@@ -42,7 +45,7 @@ const FormTask = ({ selectedItem, setSelectedItem, setActualizar, actualizar }) 
                 <input type="checkbox" checked={selectedItem ? selectedItem.done : false} onChange={(e) => {
                     setSelectedItem({
                         ...selectedItem,
-                        done: e.target.checked==true ? true : false
+                        done: e.target.checked == true ? true : false
                     });
                 }} />
                 <span className="ml-2 text-green-500 font-bold">Done</span>

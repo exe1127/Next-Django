@@ -6,22 +6,39 @@ export const cargarTareas = async () => {
     return data;
 }
 
-export const sendTask = async (titulo, descripcion, done) => {
-
-    try {
-        const respuesta = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/back/task/`, {
-            method: 'POST',
-            body: JSON.stringify({ title: titulo, description: descripcion, done: done }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        if (!respuesta.ok) throw new Error('Error en la solicitud');
-        const data = await respuesta.json();
-        console.log(data);
-    } catch (error) {
-        console.error('Error:', error);
+export const sendTask = async (titulo, descripcion, done, id) => {
+    if (id) {
+        try {
+            const respuesta = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/back/task/${id}/`, {
+                method: 'PUT',
+                body: JSON.stringify({ title: titulo, description: descripcion, done: done }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (!respuesta.ok) throw new Error('Error en la solicitud');
+            const data = await respuesta.json();
+            console.log(data);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    } else {
+        try {
+            const respuesta = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/back/task/`, {
+                method: 'POST',
+                body: JSON.stringify({ title: titulo, description: descripcion, done: done }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (!respuesta.ok) throw new Error('Error en la solicitud');
+            const data = await respuesta.json();
+            console.log(data);
+        } catch (error) {
+            console.error('Error:', error);
+        }
     }
+
 }
 
 export const sup = async (id, setActualizar, actualizar) => {
